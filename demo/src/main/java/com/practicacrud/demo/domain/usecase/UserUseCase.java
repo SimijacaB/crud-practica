@@ -21,6 +21,10 @@ public class UserUseCase implements IUserServicePort {
     @Override
     public void saveUser(User user) {
         // VALIDACIONES
+        if(!isValidId(user.getId())){
+            throw new UserValidationException(ErrorMessages.ID_INVALID.getMessage());
+        }
+
         if (!isValidName(user.getName())){
             throw new UserValidationException(ErrorMessages.NAME_INVALID.getMessage());
         }
@@ -60,6 +64,7 @@ public class UserUseCase implements IUserServicePort {
 
     @Override
     public void updateUser(User user) {
+
         if (!isValidName(user.getName())){
             throw new UserValidationException(ErrorMessages.NAME_INVALID.getMessage());
         }
@@ -82,6 +87,14 @@ public class UserUseCase implements IUserServicePort {
 
     // VALIDACIONES CORRESPONDIENTES A LA CAPA DEL DOMINIO
     // En esta capa se hacen las validaciones para que el usuario digite un nombre válido (solo letras y números) y que no este vacío
+
+    public boolean isValidId(String id){
+        if (id == null || id.isEmpty()){
+            return false;
+        }
+        String regex = "^[0-9]+$";
+        return id.matches(regex);
+    }
     public boolean isValidName(String name) {
         if (name == null || name.isEmpty()) {
             return false;
