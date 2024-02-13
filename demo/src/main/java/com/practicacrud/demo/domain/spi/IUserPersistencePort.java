@@ -5,7 +5,7 @@ import com.practicacrud.demo.domain.model.User;
 import java.util.List;
 
 public interface IUserPersistencePort {
-    public User saveUser(User user);
+    public void saveUser(User user);
 
     public User getUserById(String userId);
 

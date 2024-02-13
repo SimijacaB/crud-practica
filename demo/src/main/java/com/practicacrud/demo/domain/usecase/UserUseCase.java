@@ -6,7 +6,6 @@ import com.practicacrud.demo.domain.exception.ErrorMessages;
 import com.practicacrud.demo.domain.exception.UserValidationException;
 import com.practicacrud.demo.domain.model.User;
 import com.practicacrud.demo.domain.spi.IUserPersistencePort;
-import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 
 public class UserUseCase implements IUserServicePort {
